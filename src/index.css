@@ -1,8 +1,22 @@
 :root {
-  --background: #FFFFFF;
+  --black: rgba(0, 0, 0, 1);
+  --white: rgba(255, 255, 255, 1);
+
+  --darkTheme-color1: rgba(0, 59, 70, 1);
+  --darkTheme-color2: rgba(7, 87, 91, 1);
+  --darkTheme-color3: rgba(102, 165, 173, 1);
+  --darkTheme-color4: rgba(196, 223, 230, 1);
+  --darkTheme-color4-transparent: rgba(196, 223, 230, 0.1);
+
+  --lightTheme-color1: rgba(25, 149, 173, 1);
+  --lightTheme-color2: rgba(161, 214, 226, 1);
+  --lightTheme-color3: rgba(188, 186, 190, 1);
+  --lightTheme-color4: rgba(241, 241, 242, 1);
+
 }
 
 * {
   margin: 0;
   padding: 0;
 }
+

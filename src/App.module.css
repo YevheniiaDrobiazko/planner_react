@@ -1,0 +1,25 @@
+.page::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;   
+} 
+
+.page_light,
+.page_dark {
+  composes: page;
+} 
+
+.page_light::after {
+  background: url("./assets/images/ocean_light.jpg") center/cover no-repeat;
+  opacity: 0.8;
+}
+
+.page_dark::after {
+  background: url("./assets/images/ocean_dark.jpg") center/cover no-repeat;
+  opacity: 0.9;
+}
+

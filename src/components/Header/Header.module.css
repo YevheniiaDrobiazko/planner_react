@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.header_light {
+  composes: header;
+  background-color: var(--lightTheme-color1);
+  box-shadow: 0px 1px 10px 1px var(--lightTheme-color4);
+}
+
+.header_dark {
+  composes: header;
+  background-color: var(--darkTheme-color1);
+  box-shadow: 0px 1px 10px 1px var(--darkTheme-color3);
+}
+
+.title {
+  font-family: 'Climate Crisis', cursive;
+  letter-spacing: 4px;
+}
+
+.title_light {
+  composes: title;
+  color: var(--lightTheme-color2);
+  text-shadow: 1px 1px 2px var(--black);
+}
+
+.title_dark {
+  composes: title;
+  text-shadow: 1px 1px 2px var(--darkTheme-color3);
+}

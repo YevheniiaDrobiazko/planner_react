@@ -1,10 +1,17 @@
 import React from 'react';
-import './App.css';
+import Header from './components/Header/Header';
+import styles from './App.module.css';
 
 function App() {
+  // const theme = 'light'
+  const theme = 'dark'
+
   return (
-    <div className="App">
-      <div>Planner</div>
+    <div 
+      className={styles[`page_${theme}`]}
+    >
+      <Header theme={theme} />
+      <main></main>
     </div>
   );
 }
