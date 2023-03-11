@@ -1,17 +1,25 @@
 :root {
   --black: rgba(0, 0, 0, 1);
   --white: rgba(255, 255, 255, 1);
+  --transparent: rgba(255, 255, 255, 0);
 
+  --darkTheme-color0: rgb(7, 32, 39);
   --darkTheme-color1: rgba(0, 59, 70, 1);
   --darkTheme-color2: rgba(7, 87, 91, 1);
   --darkTheme-color3: rgba(102, 165, 173, 1);
   --darkTheme-color4: rgba(196, 223, 230, 1);
+  --darkTheme-color0-transparent: rgba(7, 32, 39, 0.4);
+  --darkTheme-color1-transparent: rgba(0, 59, 70, 0.9);
   --darkTheme-color4-transparent: rgba(196, 223, 230, 0.1);
 
+  --lightTheme-color0: rgb(13, 91, 132);
   --lightTheme-color1: rgba(25, 149, 173, 1);
   --lightTheme-color2: rgba(161, 214, 226, 1);
   --lightTheme-color3: rgba(188, 186, 190, 1);
   --lightTheme-color4: rgba(241, 241, 242, 1);
+  --lightTheme-color1-transparent: rgba(25, 149, 173, 0.3);
+  --lightTheme-color2-transparent: rgba(161, 214, 226, 0.7);
+  --lightTheme-color4-transparent: rgba(241, 241, 242, 0.5);
 
 }
 
@@ -20,3 +28,118 @@
   padding: 0;
 }
 
+/* ----- CALENDAR ----- */
+
+.react-calendar__navigation {
+  border-radius: 20px;
+}
+
+.dark .react-calendar__navigation,
+.dark .react-calendar__viewContainer {
+  background-color: var(--darkTheme-color1-transparent);
+}
+.light .react-calendar__navigation,
+.light .react-calendar__viewContainer {
+  background-color: var(--lightTheme-color2-transparent);
+}
+
+.react-calendar__navigation__arrow { 
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 700;
+}
+.dark .react-calendar__navigation__arrow {
+  color: var(--darkTheme-color3);
+}
+.light .react-calendar__navigation__arrow {
+  color: var(--lightTheme-color1);
+}
+
+.react-calendar__navigation__label {
+  border-radius: 20px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 32px;
+}
+.dark .react-calendar__navigation__label {
+  color: var(--darkTheme-color4);
+}
+.light .react-calendar__navigation__label {
+  color: var(--lightTheme-color0);
+}
+
+.react-calendar__month-view__weekdays abbr {
+  font-family: 'Dancing Script', cursive;
+  font-size: 14px;
+  text-decoration: none;
+}
+.dark .react-calendar__month-view__weekdays abbr {
+  color: var(--darkTheme-color3);
+}
+.light .react-calendar__month-view__weekdays abbr {
+  color: var(--lightTheme-color0);
+}
+
+.react-calendar__tile {
+  height: 86px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.react-calendar__viewContainer,
+.react-calendar__month-view__days__day,
+.react-calendar__year-view__months button,
+.react-calendar__decade-view__years button,
+.react-calendar__century-view__decades button {
+  border-radius: 20px;
+}
+
+.react-calendar__month-view__days__day abbr {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.dark .react-calendar__month-view__days__day--weekend abbr {
+  color: var(--darkTheme-color0)
+}
+.dark .react-calendar__month-view__days__day--neighboringMonth abbr {
+  color: var(--darkTheme-color2)
+}
+.dark .react-calendar__tile--active abbr {
+  color:var(--white)
+}
+
+.light .react-calendar__month-view__days__day abbr {
+  color: var(--darkTheme-color2)
+}
+.light .react-calendar__month-view__days__day--weekend abbr {
+  color: var(--lightTheme-color1)
+}
+.light .react-calendar__month-view__days__day--neighboringMonth abbr {
+  color: var(--lightTheme-color3)
+}
+.light .react-calendar__tile--active abbr {
+  color: var(--white);
+  text-shadow: 2px 2px var(--lightTheme-color1);
+}
+
+
+/* month - year - decade tile*/
+.dark button.react-calendar__tile.react-calendar__tile--now.react-calendar__year-view__months__month,
+.dark button.react-calendar__tile.react-calendar__tile--now.react-calendar__decade-view__years__year,
+.dark button.react-calendar__tile.react-calendar__tile--now.react-calendar__century-view__decades__decade {
+  background: var(--darkTheme-color0-transparent);
+  color: var(--darkTheme-color3);
+}
+
+.light button.react-calendar__tile.react-calendar__tile--now.react-calendar__year-view__months__month,
+.light button.react-calendar__tile.react-calendar__tile--now.react-calendar__decade-view__years__year,
+.light button.react-calendar__tile.react-calendar__tile--now.react-calendar__century-view__decades__decade {
+  background: var(--lightTheme-color1-transparent);
+  color: var(--lightTheme-color4);
+}
+
+/* decade disabled */
+.react-calendar button.react-calendar__navigation__label:disabled {
+  background: var(--transparent);
+}
