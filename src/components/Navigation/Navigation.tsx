@@ -24,8 +24,8 @@ const Navigation: ({theme}: NavigationProps ) => JSX.Element =
           <li className={styles[`item_${theme}`]}>
             <SearchIcon className={styles[`icon_${theme}`]} />
           </li>
-          <li className={styles[`item_${theme}`]}>
-            <SettingsIcon className={styles[`icon_${theme}`]}/>
+          <li className={styles[`item_${theme}_active`]}>
+            <SettingsIcon className={styles[`icon_${theme}`] }/>
           </li>
         </ul>
       

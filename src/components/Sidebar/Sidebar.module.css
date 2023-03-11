@@ -1,0 +1,48 @@
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.wrapper_dark {
+  composes: wrapper;
+  background: var(--black-transparent);
+}
+.wrapper_light {
+  composes: wrapper;
+  background: var(--black-transparent);
+}
+
+.sidebar {
+  position: inherit;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  padding-top: 90px;
+}
+
+.sidebar_dark {
+  composes: sidebar;
+  background: var(--darkTheme-color1);
+}
+.sidebar_light {
+  composes: sidebar;
+  background: var(--lightTheme-color4);
+}
+
+.content {
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
+.button {
+  flex-basis: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

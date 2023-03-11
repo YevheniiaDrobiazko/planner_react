@@ -12,7 +12,12 @@ const Header: ({theme}: HeaderProps ) => JSX.Element =
   
     return(
       <header className={styles[`header_${theme}`]}>
-        <Button theme={theme} text='today' classSpace='header' />
+        <Button 
+          theme={theme} 
+          text='today' 
+          classSpace='header' 
+          handleClick={() => console.log('today click')}
+        />
         <div className={styles[`title_${theme}`]}>
           <h1>Planner</h1>
         </div>
