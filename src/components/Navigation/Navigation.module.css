@@ -61,12 +61,15 @@
 
 .item_light_active {
   composes: item_light;
-  border-color: var(--darkTheme-color1);
+  border-color: var(--lightTheme-color1);
   background-color: var(--lightTheme-color4);
 }
 .item_light_active .icon_light {
-  fill: var(--darkTheme-color1);
+  fill: var(--lightTheme-color1);
+}
+.item_light_active:hover {
+  border-color: var(--lightTheme-color1);
 }
 .item_light_active:hover .icon_light {
-  fill:var(--lightTheme-color1);
+  fill:var(--lightTheme-color0);
 }

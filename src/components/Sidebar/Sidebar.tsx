@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './Sidebar.module.css';
 import Settings from '../Settings/Settings';
 import Button from '../Button/Button';
+import styles from './Sidebar.module.css';
 
 interface SidebarProps {
   theme: 'light' | 'dark';

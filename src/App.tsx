@@ -3,7 +3,6 @@ import Header from './components/Header/Header';
 import Content from './components/Content/Content';
 import Sidebar from './components/Sidebar/Sidebar';
 import styles from './App.module.css';
-import 'react-calendar/dist/Calendar.css';
 
 function App() {
   const theme = 'light'

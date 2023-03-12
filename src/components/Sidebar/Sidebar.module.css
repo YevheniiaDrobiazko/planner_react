@@ -29,10 +29,12 @@
 .sidebar_dark {
   composes: sidebar;
   background: var(--darkTheme-color1);
+  box-shadow: 1px 1px 10px 2px var(--black);
 }
 .sidebar_light {
   composes: sidebar;
   background: var(--lightTheme-color4);
+  box-shadow: 1px 1px 10px 2px var(--darkTheme-color1);
 }
 
 .content {

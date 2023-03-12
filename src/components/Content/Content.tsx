@@ -13,13 +13,6 @@ const Content: ({theme}: ContentProps ) => JSX.Element =
     const today = new Date()
     const [activeDate, setActiveDate] = useState<Date | null>(null)
 
-    const classTile = (date: Date) => {
-      if(changeDateFormat(date) === changeDateFormat(activeDate)){
-        return styles[`activeDay_${theme}`]
-      } else if(changeDateFormat(date) === changeDateFormat(today)){
-        return styles[`today_${theme}`] 
-      } else return null
-    }
     const contentTile = (date: Date) => {
       return changeDateFormat(date) === changeDateFormat(today) 
         ? <Task theme={theme} /> 
@@ -29,10 +22,10 @@ const Content: ({theme}: ContentProps ) => JSX.Element =
     return(
       <main className={styles.content}>
         <Calendar 
-          className={[styles[`calendar_${theme}`], `${theme}`]}
+          className={theme}
           calendarType='US' //'ISO 8601'
           locale='en-US' //'uk-UA'
-          tileClassName={({date}) => classTile(date)}
+          // tileClassName={({date}) => 'className'}
           tileContent={({date}) => contentTile(date)}
           onClickDay={(value) => setActiveDate(value)}
         />
