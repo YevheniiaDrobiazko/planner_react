@@ -9,12 +9,19 @@ interface SidebarProps {
 
 const Sidebar: ({theme}: SidebarProps ) => JSX.Element = 
   ({theme}) => {
+    const contentType = 'settings'
+
+    const content = (contentType: string) => {
+      if(contentType === 'settings') {
+        return <Settings theme={theme} />
+      } else return <p></p>
+    }
   
     return(
       <div className={styles[`wrapper_${theme}`]}>
         <div className={styles[`sidebar_${theme}`]}>
           <div className={styles.content}>
-            <Settings theme={theme} />
+            {content(contentType)}
           </div>
           <div className={styles.button} >
             <Button 
