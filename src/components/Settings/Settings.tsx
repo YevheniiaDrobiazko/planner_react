@@ -1,4 +1,5 @@
 import React from 'react';
+import { useFirebase } from '../../hooks/useFirebase';
 import styles from './Settings.module.css';
 
 interface SettingsProps {
@@ -7,6 +8,7 @@ interface SettingsProps {
 
 const Settings: ({theme}: SettingsProps ) => JSX.Element = 
   ({theme}) => {
+    const {setTheme, setLanguage} = useFirebase()
   
     return(
       <ul className={styles[`settings_${theme}`]}>
@@ -28,11 +30,17 @@ const Settings: ({theme}: SettingsProps ) => JSX.Element =
             Language:
           </p>
           <ul className={styles.languages_list}>
-            <li className={styles[`radio_${theme}`]} >
+            <li 
+              className={styles[`radio_${theme}`]} 
+              onClick={() => setLanguage('english')}
+            >
               <input type='radio' id="en" name="language" value="english" />
               <label htmlFor="en">english</label>
             </li>
-            <li className={styles[`radio_${theme}`]} >
+            <li 
+              className={styles[`radio_${theme}`]} 
+              onClick={() => setLanguage('ukrainian')}
+            >
               <input type='radio' id="ua" name="language" value="ukrainian" />
               <label htmlFor="ua">ukrainian</label>
             </li>
