@@ -1,0 +1,192 @@
+.settings {
+  font-size: 18px;
+  text-transform: capitalize;
+}
+.settings_dark {
+  composes: settings;
+}
+.settings_light {
+  composes: settings;
+  color: var(--lightTheme-color0);
+}
+
+.settings label:hover {
+  cursor: pointer;
+}
+
+.item {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.title {
+  margin-bottom: 10px;
+  font-size: 21px;
+}
+
+.theme_choice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.languages_list {
+  margin-left: 66px;
+}
+
+/*   input - checkbox   */
+.switch {
+  position: relative;
+  margin: 0 16px;
+  width: 60px;
+  height: 24px;
+}
+.switch_dark,
+.switch_light {
+  composes: switch;
+}
+
+.switch input {
+  width: 60px;
+  height: 24px;
+  display: none;
+}
+
+.switch label {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+}
+.switch_dark label {
+  background: var(--darkTheme-color0-transparent);
+  box-shadow:
+      inset 0 3px 8px 1px var(--darkTheme-color0-transparent),
+      0 1px 0 var(--black);
+}
+.switch_light label {
+  background: var(--lightTheme-color4);
+  box-shadow:
+      inset 0 3px 8px 1px var(--lightTheme-color3),
+      0 1px 0 var(--lightTheme-color3);
+}
+.switch_dark label:hover {
+  box-shadow:
+      inset 0 3px 8px 4px var(--darkTheme-color0-transparent),
+      0 1px 5px var(--black);
+}
+.switch_light label:hover {
+  box-shadow:
+      inset 0 3px 8px 1px var(--lightTheme-color3),
+      0 1px 5px var(--lightTheme-color3);
+}
+
+.switch label i {
+  display: block;
+  height: 100%;
+  width: 60%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+.switch_dark label i {
+  background: var(--darkTheme-color2); 
+  background: linear-gradient(var(--darkTheme-color1), var(--darkTheme-color3));
+  box-shadow:
+      inset 0 1px 0 var(--darkTheme-color1),
+      0 0 8px rgba(0,0,0,0.3),
+      0 5px 5px rgba(0,0,0,0.2);
+}
+.switch_light label i {
+  background: var(--lightTheme-color2); 
+  background: linear-gradient(var(--lightTheme-color1), var(--lightTheme-color2));
+  box-shadow:
+      inset 0 1px 0 var(--lightTheme-color1),
+      0 0 8px rgba(0,0,0,0.3),
+      0 5px 5px rgba(0,0,0,0.2);
+}
+
+.switch input:checked ~ label i { /* Toggle */
+  left: auto;
+  right: -1%;
+}
+
+/*  input - radio   */
+.radio {
+  display: block;
+  margin-bottom: 10px;
+}
+.radio_dark,
+.radio_light {
+  composes: radio;
+}
+
+.radio input {
+  display: none;
+}
+
+.radio label {
+  position: relative;
+  padding-left: 20px;
+}
+.radio_dark label:hover {
+  text-shadow: 0 0 5px  rgba(0,0,0,0.2);
+}
+.radio_light label:hover {
+  text-shadow: 0 0 6px var(--lightTheme-color3);
+}
+
+.radio label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 3px;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+}
+.radio_dark label::before {
+  background: linear-gradient(var(--darkTheme-color1), var(--darkTheme-color2));
+  box-shadow:
+      inset 0 1px 0 var(--darkTheme-color1),
+      0 0 8px rgba(0,0,0,0.3),
+      0 5px 5px rgba(0,0,0,0.2);
+}
+.radio_light label::before {
+  background: var(--lightTheme-color4);
+  box-shadow:
+      inset 0 3px 8px 1px var(--lightTheme-color3),
+      0 1px 0 var(--lightTheme-color4);
+}
+.radio_dark label:hover::before {
+  box-shadow:
+      inset 0 1px 0 var(--darkTheme-color1),
+      0 0 8px rgba(0,0,0,0.6),
+      0 5px 5px rgba(0,0,0,0.2);
+}
+.radio_light label:hover:before {
+  box-shadow:
+      inset 0 3px 8px 1px var(--lightTheme-color3),
+      0 1px 5px var(--lightTheme-color3);
+}
+
+.radio input:checked ~ label::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 6px;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+}
+.radio_dark input:checked ~ label::after {
+  background: var(--darkTheme-color2); 
+  background: linear-gradient(var(--darkTheme-color2), var(--darkTheme-color3));
+}
+.radio_light input:checked ~ label::after {
+  background: var(--lightTheme-color2); 
+  background: linear-gradient(var(--lightTheme-color1), var(--lightTheme-color2));
+}

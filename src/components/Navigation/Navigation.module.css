@@ -1,0 +1,75 @@
+.list {
+  display: flex;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  border: 1px solid;
+  border-radius: 50%;
+}
+.item:hover {
+  cursor: pointer;
+}
+
+.item_light {
+  composes: item;
+  border-color: var(--lightTheme-color2);
+  background-color: var(--lightTheme-color2);
+}
+.item_light:hover {
+  border-color: var(--lightTheme-color2);
+  background-color: var(--lightTheme-color4);
+}
+
+.item_dark {
+  composes: item;
+  border-color: var(--darkTheme-color2);
+  background-color: inherit;
+}
+.item_dark:hover {
+  background-color: var(--darkTheme-color4-transparent);
+  border-color: var(--darkTheme-color2);
+}
+
+.icon {
+  width: 20px;
+  width: 20px;
+}
+
+.icon_light {
+  composes: icon;
+  fill:var(--lightTheme-color1);
+}
+.icon_dark {
+  composes: icon;
+  fill: var(--darkTheme-color3);
+}
+
+.item_dark_active {
+  composes: item_dark;
+  border-color: var(--darkTheme-color1);
+  background-color: var(--darkTheme-color3);
+}
+.item_dark_active .icon_dark {
+  fill: var(--darkTheme-color1);
+}
+
+.item_light_active {
+  composes: item_light;
+  border-color: var(--lightTheme-color1);
+  background-color: var(--lightTheme-color4);
+}
+.item_light_active .icon_light {
+  fill: var(--lightTheme-color1);
+}
+.item_light_active:hover {
+  border-color: var(--lightTheme-color1);
+}
+.item_light_active:hover .icon_light {
+  fill:var(--lightTheme-color0);
+}

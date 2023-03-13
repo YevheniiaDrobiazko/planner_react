@@ -1,0 +1,42 @@
+.list {
+  width: 92%;
+  margin: 0 14px;
+}
+
+.task {
+  display: block;
+  margin: 4px 0;
+  width: 100%;
+  height: 14px;
+  border-radius: 5px;
+  padding-left: 6px;
+  font-size: 11px;
+  text-align: start;
+  overflow: hidden;
+}
+
+.task_dark {
+  composes: task;
+  color: var(--black);
+  background: var(--darkTheme-color3);
+}
+.task_light {
+  composes: task;
+  color: var(--white);
+  background: var(--lightTheme-color1);
+}
+
+.task_more {
+  composes: task;
+  text-align: center;
+  background: none;
+}
+
+.task_dark_more {
+  composes: task_more;
+  color: var(--darkTheme-color3);
+}
+.task_light_more {
+  composes: task_more;
+  color: var(--lightTheme-color0);
+}
