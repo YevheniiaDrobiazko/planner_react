@@ -3,6 +3,7 @@ import Settings from '../Settings/Settings';
 import Button from '../Button/Button';
 import styles from './Sidebar.module.css';
 import { ThemeType } from '../../features/types';
+import { useTranslation } from 'react-i18next';
 
 interface SidebarProps {
   theme: ThemeType;
@@ -11,6 +12,7 @@ interface SidebarProps {
 const Sidebar: ({theme}: SidebarProps ) => JSX.Element = 
   ({theme}) => {
     const contentType = 'settings'
+    const {t} = useTranslation()
 
     const content = (contentType: string) => {
       if(contentType === 'settings') {
@@ -27,7 +29,7 @@ const Sidebar: ({theme}: SidebarProps ) => JSX.Element =
           <div className={styles.button} >
             <Button 
               theme={theme} 
-              text='Cancel'
+              text={t('BUTTON.CANCEL')}
               classSpace='sidebar'
               handleClick={() => console.log('cancel click')}
             />

@@ -6,25 +6,25 @@ import styles from './App.module.css';
 import { useFirebase } from './hooks/useFirebase';
 import { useSelector } from 'react-redux';
 import { RootState } from './store';
+import i18n from './i18n';
 
 function App() {
-  // const appState = useSelector((state: RootState) => state.app)
   const theme = useSelector((state: RootState) => state.app.settings.theme)
+  const language = useSelector((state: RootState) => state.app.settings.language)
   const {getSettings} = useFirebase()
 
   useEffect(() => {
     getSettings()
   });
 
-  // React.useEffect(() => {
-  //   getLanguage()
-  //   i18n.changeLanguage(language);
-  // }, [language]);
+  React.useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language]);
 
   return (
     <div className={styles[`page_${theme}`]}>
       <Header theme={theme} />
-      <Content theme={theme} />
+      <Content theme={theme} language={language} />
       <Sidebar theme={theme} />
     </div>
   );

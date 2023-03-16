@@ -27,6 +27,7 @@
 .title {
   font-family: 'Climate Crisis', cursive;
   letter-spacing: 4px;
+  text-transform: capitalize;
 }
 
 .title_light {

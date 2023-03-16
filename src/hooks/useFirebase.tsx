@@ -51,7 +51,6 @@ export const useFirebase = (): useFirebaseHook => {
     const settingsRef = ref(database, 'settings');
     onValue(settingsRef, (snapshot) => {
       const data = snapshot.val();
-      // console.log("GET_Settings:", data.theme)
       if(data && data.theme !== settings.theme ) {
         dispatch(changeTheme(data.theme))
       }
@@ -62,7 +61,6 @@ export const useFirebase = (): useFirebaseHook => {
   }
 
   const setTheme = (newTheme: string) => {
-    // console.log('SET:', newTheme)
     update(ref(database, 'settings/'), {
       theme: newTheme,
     })

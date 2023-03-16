@@ -2,6 +2,9 @@ import React from 'react';
 import { useFirebase } from '../../hooks/useFirebase';
 import styles from './Settings.module.css';
 import { ThemeType } from '../../features/types';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import { useTranslation } from 'react-i18next';
 
 interface SettingsProps {
   theme: ThemeType;
@@ -9,7 +12,9 @@ interface SettingsProps {
 
 const Settings: ({theme}: SettingsProps ) => JSX.Element = 
   ({theme}) => {
+    const language = useSelector((state: RootState) => state.app.settings.language)
     const {setTheme, setLanguage} = useFirebase()
+    const {t} = useTranslation()
 
     const changeTheme = () => theme === 'dark'
       ? setTheme('light')
@@ -19,13 +24,11 @@ const Settings: ({theme}: SettingsProps ) => JSX.Element =
       <ul className={styles[`settings_${theme}`]}>
         <li className={styles.item}>
           <p className={styles.title}>
-            Theme:
+            {t('THEME.TITLE') + ':'}
           </p>
           <div className={styles.theme_choice}>
-            <p>dark</p>
-            <div 
-              className={styles[`switch_${theme}`]}
-              >
+            <p>{t('THEME.DARK')}</p>
+            <div className={styles[`switch_${theme}`]}>
               <input 
                 type="checkbox" 
                 id='theme' 
@@ -34,27 +37,35 @@ const Settings: ({theme}: SettingsProps ) => JSX.Element =
               />
               <label htmlFor='theme'><i></i></label>
             </div>
-            <p>light</p>
+            <p>{t('THEME.LIGHT')}</p>
           </div>
         </li>
         <li className={styles.item}>
           <p className={styles.title}>
-            Language:
+          {t('LANGUAGE.TITLE') + ':'}
           </p>
           <ul className={styles.languages_list}>
-            <li 
-              className={styles[`radio_${theme}`]} 
-              onClick={() => setLanguage('english')}
-            >
-              <input type='radio' id="en" name="language" value="english" />
-              <label htmlFor="en">english</label>
+            <li className={styles[`radio_${theme}`]}>
+              <input 
+                type='radio' 
+                id="en" 
+                name="language" 
+                value="english" 
+                checked={language === 'en' ? true : false}
+                onChange={() => setLanguage('en')}
+              />
+              <label htmlFor="en">{t('LANGUAGE.EN')}</label>
             </li>
-            <li 
-              className={styles[`radio_${theme}`]} 
-              onClick={() => setLanguage('ukrainian')}
-            >
-              <input type='radio' id="ua" name="language" value="ukrainian" />
-              <label htmlFor="ua">ukrainian</label>
+            <li className={styles[`radio_${theme}`]}>
+              <input 
+                type='radio' 
+                id="ua" 
+                name="language" 
+                value="ukrainian" 
+                checked={language === 'ua' ? true : false}
+                onChange={() => setLanguage('ua')}
+              />
+              <label htmlFor="ua">{t('LANGUAGE.UA')}</label>
             </li>
           </ul>
         </li>
