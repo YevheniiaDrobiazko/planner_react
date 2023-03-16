@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { LanguageType, TaskType, ThemeType } from './types'
+import { ChangeSidebarContentProps, LanguageType, SidebarViewType, TaskType, ThemeType } from './types'
 
 interface AppState {
   settings: {
     theme: ThemeType
     language: LanguageType
-  }
+  },
+  sidebarView: SidebarViewType,
   tasks: TaskType[]
 }
 
@@ -14,6 +15,12 @@ const initialState: AppState = {
   settings: {
     theme: 'dark',
     language: 'en'
+  },
+  sidebarView: {
+    settings: false,
+    search: false,
+    list: false,
+    notification: false
   },
   tasks: []
 }
@@ -27,13 +34,34 @@ export const appSlice = createSlice({
     },
     changeLanguage: (state, action: PayloadAction<LanguageType>) => {
       state.settings.language = action.payload;
-    }
+    },
+    closeSidebar: (state) => {
+      const initialContent = {
+        settings: false,
+        search: false,
+        list: false,
+        notification: false
+      }
+      state.sidebarView = initialContent
+    },
+    changeSidebarContent: (state, action: PayloadAction<ChangeSidebarContentProps>) => {
+      const initialContent = {
+        settings: false,
+        search: false,
+        list: false,
+        notification: false
+      }
+      initialContent[action.payload.key] = action.payload.visibility;
+      state.sidebarView = initialContent
+    },
   },
 })
 
 export const { 
   changeTheme,
-  changeLanguage
+  changeLanguage,
+  closeSidebar,
+  changeSidebarContent
 } = appSlice.actions
 
 export const rootReducer = appSlice.reducer;

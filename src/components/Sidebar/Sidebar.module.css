@@ -24,8 +24,15 @@
   flex-direction: column;
   width: 340px;
   padding-top: 90px;
+  /* transition: 1s;
+  transform: translateX(100%);  */
 }
-
+/* 
+.sidebar_active {
+  transition: 1s;
+  transform: translateX(0%); 
+} 
+*/
 .sidebar_dark {
   composes: sidebar;
   background: var(--darkTheme-color1);

@@ -6,3 +6,15 @@ export interface TaskType {
   date: string
   text: string
 } 
+
+export interface SidebarViewType {
+  settings: boolean,
+  search: boolean,
+  list: boolean,
+  notification: boolean
+}
+
+export interface ChangeSidebarContentProps {
+  key: keyof SidebarViewType, 
+  visibility: boolean
+}
