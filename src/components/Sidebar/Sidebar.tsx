@@ -2,9 +2,10 @@ import React from 'react';
 import Settings from '../Settings/Settings';
 import Button from '../Button/Button';
 import styles from './Sidebar.module.css';
+import { ThemeType } from '../../features/types';
 
 interface SidebarProps {
-  theme: 'light' | 'dark';
+  theme: ThemeType;
 }
 
 const Sidebar: ({theme}: SidebarProps ) => JSX.Element = 

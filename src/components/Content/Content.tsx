@@ -3,9 +3,10 @@ import Calendar from 'react-calendar';
 import changeDateFormat from '../../helpers/ChangeDateFormat';
 import styles from './Content.module.css';
 import Task from '../Task/Task';
+import { ThemeType } from '../../features/types';
 
 interface ContentProps {
-  theme: 'light' | 'dark'
+  theme: ThemeType
 }
 
 const Content: ({theme}: ContentProps ) => JSX.Element = 

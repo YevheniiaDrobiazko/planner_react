@@ -4,9 +4,10 @@ import {ReactComponent as SearchIcon} from '../../assets/icons/search.svg';
 import {ReactComponent as ListIcon} from '../../assets/icons/list.svg';
 import {ReactComponent as NotificationIcon} from '../../assets/icons/notification.svg';
 import styles from './Navigation.module.css';
+import { ThemeType } from '../../features/types';
 
 interface NavigationProps {
-  theme: 'light' | 'dark'
+  theme: ThemeType
 }
 
 const Navigation: ({theme}: NavigationProps ) => JSX.Element = 

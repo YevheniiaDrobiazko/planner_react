@@ -2,9 +2,10 @@ import React from 'react';
 import Button from '../Button/Button';
 import Navigation from '../Navigation/Navigation';
 import styles from './Header.module.css';
+import { ThemeType } from '../../features/types';
 
 interface HeaderProps {
-  theme: 'light' | 'dark';
+  theme: ThemeType;
 }
 
 const Header: ({theme}: HeaderProps ) => JSX.Element = 

@@ -1,5 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, onValue, ref, remove, set, update } from "firebase/database";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
+import { useDispatch } from "react-redux";
+import { changeLanguage, changeTheme } from "../features/appSlice";
 
 type useFirebaseHook = {
   getSettings: () => void
@@ -12,7 +16,8 @@ type useFirebaseHook = {
 }
 
 export const useFirebase = (): useFirebaseHook => {
-  // const language = useSelector((state: RootState) => state.app.language)
+  const settings = useSelector((state: RootState) => state.app.settings)
+  const dispatch = useDispatch()
 
   const key = process.env.REACT_APP_FIREBASE_KEY;
   const id = process.env.REACT_APP_FIREBASE_ID;
@@ -46,18 +51,18 @@ export const useFirebase = (): useFirebaseHook => {
     const settingsRef = ref(database, 'settings');
     onValue(settingsRef, (snapshot) => {
       const data = snapshot.val();
-      console.log("Settings:", data)
-      // if(data && (
-      //       data.theme !== settings.theme ||
-      //       data.language !== settings.language
-      //       ) {
-      //         dispatch(changeSettings(data))
-      //       }
-      //   })
+      // console.log("GET_Settings:", data.theme)
+      if(data && data.theme !== settings.theme ) {
+        dispatch(changeTheme(data.theme))
+      }
+      if(data && data.language !== settings.language) {
+        dispatch(changeLanguage(data.language))
+      }
     })
   }
 
   const setTheme = (newTheme: string) => {
+    // console.log('SET:', newTheme)
     update(ref(database, 'settings/'), {
       theme: newTheme,
     })
