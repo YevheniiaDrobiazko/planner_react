@@ -1,0 +1,17 @@
+{
+  "TITLE": "planner",
+  "BUTTON": {
+    "TODAY": "today",
+    "CANCEL": "cancel"
+  },
+  "THEME": {
+    "TITLE": "theme",
+    "DARK": "dark",
+    "LIGHT": "light"
+  },
+  "LANGUAGE": {
+    "TITLE": "language",
+    "EN": "english",
+    "UA": "ukrainian"
+  }
+}

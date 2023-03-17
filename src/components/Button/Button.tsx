@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './Button.module.css';
+import { ThemeType } from '../../features/types';
 
 interface ButtonProps {
-  theme: 'light' | 'dark',
+  theme: ThemeType,
   text: string,
   classSpace: string,
   handleClick: () => void;

@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './Task.module.css';
+import { ThemeType } from '../../features/types';
 
 interface TaskProps {
-  theme: 'light' | 'dark';
+  theme: ThemeType;
 }
 
 const Task: ({theme}: TaskProps ) => JSX.Element = 
