@@ -8,6 +8,7 @@ interface AppState {
     language: LanguageType
   },
   sidebarView: SidebarViewType,
+  sidebarContent: keyof SidebarViewType,
   tasks: TaskType[]
 }
 
@@ -22,6 +23,7 @@ const initialState: AppState = {
     list: false,
     notification: false
   },
+  sidebarContent: 'settings',
   tasks: []
 }
 
@@ -53,6 +55,9 @@ export const appSlice = createSlice({
       }
       initialContent[action.payload.key] = action.payload.visibility;
       state.sidebarView = initialContent
+      if(action.payload.visibility) {
+        state.sidebarContent = action.payload.key
+      }
     },
   },
 })

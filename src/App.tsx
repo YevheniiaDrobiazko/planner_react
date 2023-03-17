@@ -28,13 +28,10 @@ function App() {
     <div className={styles[`page_${theme}`]}>
       <Header theme={theme} />
       <Content theme={theme} language={language} />
-      {isSidebarVisible(sidebarView) &&
-        <Sidebar 
-          theme={theme} 
-          contentVisibility={sidebarView}
-          // visibility={isSidebarVisible(sidebarView)}
-        />
-      }
+      <Sidebar 
+        theme={theme} 
+        visible={isSidebarVisible(sidebarView)}
+      />
     </div>
   );
 }
