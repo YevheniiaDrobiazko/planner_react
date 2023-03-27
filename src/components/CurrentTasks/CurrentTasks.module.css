@@ -1,0 +1,38 @@
+.list li {
+  display: block
+}
+
+.list_calendar {
+  composes: list;
+  width: 92%;
+  margin: 0 14px;
+}
+
+.list_modal {
+  composes: list;
+  flex-grow: 1;
+  margin: 10px 0;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.task_more {
+  margin: 4px 0;
+  height: 14px;
+  border-radius: 5px;
+  padding-left: 6px;
+  font-size: 11px;
+  text-align: center;
+  background: none;
+}
+
+.task_dark_more {
+  composes: task_more;
+  color: var(--darkTheme-color3);
+}
+.task_light_more {
+  composes: task_more;
+  color: var(--lightTheme-color0);
+}
+

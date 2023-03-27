@@ -15,11 +15,9 @@
 
 .page_light::after {
   background: url("./assets/images/ocean_light.jpg") center/cover no-repeat;
-  opacity: 0.8;
 }
 
 .page_dark::after {
   background: url("./assets/images/ocean_dark.jpg") center/cover no-repeat;
-  opacity: 0.9;
 }
 

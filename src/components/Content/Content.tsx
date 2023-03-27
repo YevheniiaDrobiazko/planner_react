@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Calendar from 'react-calendar';
-import changeDateFormat from '../../helpers/ChangeDateFormat';
 import styles from './Content.module.css';
-import Task from '../Task/Task';
 import { LanguageType, ThemeType } from '../../features/types';
+import { useDispatch } from 'react-redux';
+import { changeDate, openModal } from '../../features/appSlice';
+import { useDate } from '../../hooks/useDate';
+import CurrentTasks from '../CurrentTasks/CurrentTasks';
 
 interface ContentProps {
   theme: ThemeType
@@ -12,13 +14,8 @@ interface ContentProps {
 
 const Content: ({theme, language}: ContentProps ) => JSX.Element = 
   ({theme, language}) => {
-    const today = new Date()
-
-    const contentTile = (date: Date) => {
-      return changeDateFormat(date) === changeDateFormat(today) 
-        ? <Task theme={theme} /> 
-        : null
-    }
+    const dispatch = useDispatch()
+    const {changeDateFormat} = useDate()
 
     return(
       <main className={styles.content}>
@@ -26,9 +23,17 @@ const Content: ({theme, language}: ContentProps ) => JSX.Element =
           className={theme}
           calendarType={language === 'en' ? 'US' : 'ISO 8601'}
           locale={language === 'en' ? 'en-US' : 'uk-UA'}
-          tileContent={({date}) => contentTile(date)}
-          // tileClassName={({date}) => 'className'}
-          // onClickDay={(value) => setActiveDate(value)}
+          tileContent={({date}) => 
+            <CurrentTasks 
+              theme={theme} 
+              classSpace='calendar' 
+              date={date}
+            />
+          }
+          onClickDay={(value) => {
+            dispatch(changeDate(changeDateFormat(value)))
+            dispatch(openModal())
+          }}
         />
       </main>
     )

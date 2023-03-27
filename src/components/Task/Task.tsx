@@ -1,27 +1,39 @@
 import React from 'react';
 import styles from './Task.module.css';
-import { ThemeType } from '../../features/types';
+import { TaskSpaceType, TaskType, ThemeType } from '../../features/types';
+import { sliceString } from '../../helpers/sliceString';
+import TaskButtons from '../TaskButtons/TaskButtons';
+
+
 
 interface TaskProps {
-  theme: ThemeType;
+  theme: ThemeType
+  classSpace: TaskSpaceType
+  task: TaskType
 }
 
-const Task: ({theme}: TaskProps ) => JSX.Element = 
-  ({theme}) => {
+const Task: ({theme, classSpace, task}: TaskProps ) => JSX.Element = 
+  ({theme, classSpace, task}) => {
   
-    return (
-      <ul className={styles.list}>
-        <li className={styles[`task_${theme}`]}>
-          first task
-        </li>
-        <li className={styles[`task_${theme}`]}>
-          second task
-        </li>
-        <li className={styles[`task_${theme}_more`]}>
-          see more ...
-        </li>
-      </ul>
-    )
+  return (
+    <div 
+      className={task.status === 'done'
+        ? styles[`task_${theme}_${classSpace}_done`]
+        : styles[`task_${theme}_${classSpace}`]
+      }
+    >
+      <p>
+        {classSpace === 'calendar' ? sliceString(task.text) : task.text}
+      </p>
+      {classSpace === 'modal' &&
+        <TaskButtons 
+          theme={theme}
+          classSpace={classSpace}
+          task={task}
+        />
+      }
+    </div>
+  )
 }
 
 export default Task;
