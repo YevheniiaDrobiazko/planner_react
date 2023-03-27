@@ -3,20 +3,23 @@ import { getDatabase, onValue, ref, remove, set, update } from "firebase/databas
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useDispatch } from "react-redux";
-import { changeLanguage, changeTheme } from "../features/appSlice";
+import { changeLanguage, changeTasks, changeTheme } from "../features/appSlice";
+import { TaskType, UpdateTaskStatusType, UpdateTaskType } from "../features/types";
 
 type useFirebaseHook = {
   getSettings: () => void
   setTheme: (theme: string) => void
   setLanguage: (language: string) => void
   getTasks: () => void
-  setTask: ({ taskId, taskDate, taskText }: any) => void
+  setTask: ({ id, date, text }: TaskType) => void
   updateTask: ({ taskId, taskText }: any) => void
+  updateTaskStatus: ({ id, status }: UpdateTaskStatusType) => void
   removeTask: (id: number) => void
 }
 
 export const useFirebase = (): useFirebaseHook => {
   const settings = useSelector((state: RootState) => state.app.settings)
+  const tasks = useSelector((state: RootState) => state.app.tasks)
   const dispatch = useDispatch()
 
   const key = process.env.REACT_APP_FIREBASE_KEY;
@@ -24,15 +27,15 @@ export const useFirebase = (): useFirebaseHook => {
   const appId = process.env.REACT_APP_FIREBASE_APP_ID;
   const measurementId = process.env.REACT_APP_FIREBASE_MEASUREMENT_ID;
 
-  // const isSameObjects = (x: TaskType, y: TaskType) => {
-  //   let propertyName: keyof TaskType
-  //   for( propertyName in x) {
-  //     if(JSON.stringify(x[propertyName]) !== JSON.stringify(y[propertyName])) {
-  //       return false
-  //     }
-  //   }
-  //   return true
-  // }
+  const isSameObjects = (x: TaskType, y: TaskType) => {
+    let propertyName: keyof TaskType
+    for( propertyName in x) {
+      if(JSON.stringify(x[propertyName]) !== JSON.stringify(y[propertyName])) {
+        return false
+      }
+    }
+    return true
+  }
 
   const firebaseConfig = {
     apiKey: key,
@@ -69,7 +72,7 @@ export const useFirebase = (): useFirebaseHook => {
   }
 
   const setLanguage = (newLanguage: string) => {
-    update(ref(database, 'settings'), {
+    update(ref(database, 'settings/'), {
       language: newLanguage,
     })
     .then()
@@ -84,33 +87,42 @@ export const useFirebase = (): useFirebaseHook => {
       for(const key in data) {
         arr.push(data[key])
       }
-      // if(arr.length !== tasks.length) {
-      //   dispatch(changeTasks(arr))
-      // } else {
-      //   for(let i=0; i<arr.length; i++) {
-      //     if(arr[i].id === tasks[i].id) {
-      //       if(!isSameObjects(arr[i], tasks[i])) {
-      //         dispatch(changeTasks(arr))
-      //       }
-      //     }
-      //   }
-      // }
+      if(arr.length !== tasks.length) {
+        dispatch(changeTasks(arr))
+      } else {
+        for(let i=0; i<arr.length; i++) {
+          if(arr[i].id === tasks[i].id) {
+            if(!isSameObjects(arr[i], tasks[i])) {
+              dispatch(changeTasks(arr))
+            }
+          }
+        }
+      }
     })
   }
 
-  const setTask = ({taskId, taskDate, taskText}: any) => {
-    set(ref(database, 'tasks/' + taskId), {
-      id: taskId, 
-      date: taskDate,
-      text: taskText
+  const setTask = ({id, date, text, status}: TaskType) => {
+    set(ref(database, 'tasks/' + id), {
+      id: id, 
+      date: date,
+      text: text,
+      status: status
     })
     .then()
     .catch()
   }
 
-  const updateTask = ({taskId, taskText}: any) => {
-    update(ref(database, 'tasks/' + taskId), {
-      text: taskText
+  const updateTask = ({id, text}: UpdateTaskType) => {
+    update(ref(database, 'tasks/' + id), {
+      text: text
+    })
+    .then()
+    .catch()
+  }
+
+  const updateTaskStatus = ({id, status}: UpdateTaskStatusType) => {
+    update(ref(database, 'tasks/' + id), {
+      status: status
     })
     .then()
     .catch()
@@ -129,6 +141,7 @@ export const useFirebase = (): useFirebaseHook => {
     getTasks,
     setTask,
     updateTask,
+    updateTaskStatus,
     removeTask
   };
 }

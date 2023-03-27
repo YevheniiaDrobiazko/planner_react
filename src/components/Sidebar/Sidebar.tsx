@@ -48,7 +48,7 @@ const Sidebar: ({theme, visible}: SidebarProps ) => JSX.Element =
           <div className={styles.button} >
             <Button 
               theme={theme} 
-              text={t('BUTTON.CANCEL')}
+              text={t('BUTTON.CLOSE')}
               classSpace='sidebar'
               handleClick={() => dispatch(closeSidebar())}
             />

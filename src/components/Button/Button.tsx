@@ -1,24 +1,26 @@
 import React from 'react';
 import styles from './Button.module.css';
-import { ThemeType } from '../../features/types';
+import { ButtonSpaceType, ThemeType } from '../../features/types';
 
 interface ButtonProps {
   theme: ThemeType,
   text: string,
-  classSpace: string,
+  classSpace: ButtonSpaceType,
   handleClick: () => void;
+  hidden?: boolean
 }
 
-const Button: ({theme, text, classSpace, handleClick}: ButtonProps ) => JSX.Element = 
-  ({theme, text, classSpace, handleClick}) => {
+const Button: ({theme, text, classSpace, handleClick, hidden}: ButtonProps ) => JSX.Element = 
+  ({theme, text, classSpace, handleClick, hidden}) => {
   
     return(
-      <div 
+      <input 
+      type='button'
         className={styles[`button_${classSpace}_${theme}`]}
+        disabled={hidden ? true : false}
         onClick={handleClick}
-      >
-        {text}
-      </div>
+        value={text}
+      />
     )
 }
 

@@ -1,8 +1,10 @@
 {
   "TITLE": "planner",
+  "MORE": "see more...",
+  "REMOVE": "ARE YOU SURE YOU WANT TO DELETE THIS TASK: ",
   "BUTTON": {
     "TODAY": "today",
-    "CANCEL": "cancel"
+    "CLOSE": "close"
   },
   "THEME": {
     "TITLE": "theme",
@@ -13,5 +15,19 @@
     "TITLE": "language",
     "EN": "english",
     "UA": "ukrainian"
+  },
+  "MONTH": {
+    "JAN": "january", 
+    "FAB": "february", 
+    "MAR": "march", 
+    "APR": "april", 
+    "MAY": "may", 
+    "JUN": "june", 
+    "JUL": "july", 
+    "AUG": "august", 
+    "SEP": "september", 
+    "OCT": "october", 
+    "NOV": "november", 
+    "DEC": "december"
   }
 }

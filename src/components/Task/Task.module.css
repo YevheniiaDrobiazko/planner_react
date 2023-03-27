@@ -1,12 +1,14 @@
-.list {
-  width: 92%;
-  margin: 0 14px;
+.task_dark {
+  color: var(--black);
+  background: var(--darkTheme-color3);
+}
+.task_light {
+  color: var(--white);
+  background: var(--lightTheme-color1);
 }
 
-.task {
-  display: block;
+.task_calendar {
   margin: 4px 0;
-  width: 100%;
   height: 14px;
   border-radius: 5px;
   padding-left: 6px;
@@ -15,28 +17,50 @@
   overflow: hidden;
 }
 
-.task_dark {
-  composes: task;
-  color: var(--black);
-  background: var(--darkTheme-color3);
+.task_modal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px 24px;
+  border-radius: 10px;
+  padding: 0 10px;
+  font-size: 16px;
 }
-.task_light {
-  composes: task;
-  color: var(--white);
-  background: var(--lightTheme-color1);
-}
-
-.task_more {
-  composes: task;
-  text-align: center;
-  background: none;
+.task_modal p {
+  margin: 10px;
 }
 
-.task_dark_more {
-  composes: task_more;
-  color: var(--darkTheme-color3);
+.task_done {
+  text-decoration: line-through;
+  opacity: 0.4;
 }
-.task_light_more {
-  composes: task_more;
-  color: var(--lightTheme-color0);
+
+.task_dark_calendar {
+  composes: task_calendar;
+  composes: task_dark;
 }
+.task_light_calendar {
+  composes: task_calendar;
+  composes: task_light;
+}
+
+.task_dark_modal {
+  composes: task_modal;
+  composes: task_dark;
+}
+.task_light_modal {
+  composes: task_modal;
+  composes: task_light;
+}
+
+.task_dark_modal_done {
+  composes: task_modal;
+  composes: task_dark;
+  composes: task_done;
+}
+.task_light_modal_done {
+  composes: task_modal;
+  composes: task_light;
+  composes: task_done;
+}
+

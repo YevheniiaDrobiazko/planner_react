@@ -2,6 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: inherit;
+  outline: none;
+  border: none;
 }
 .button:hover {
   cursor: pointer;
@@ -62,4 +65,29 @@
   background: var(--lightTheme-color2);
   color: var(--lightTheme-color0);
   border: 2px solid var(--lightTheme-color1);
+}
+
+.button_modal {
+  composes: button;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-transform: capitalize;
+}
+
+.button_modal_dark {
+  composes: button_modal;
+  composes: button_dark;
+}
+
+.button_modal_light {
+  composes: button_modal;
+  composes: button_light;
+}
+
+.button[disabled] {
+  opacity: 0.3;
+}
+.button[disabled]:hover {
+  cursor: not-allowed;
 }

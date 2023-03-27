@@ -8,16 +8,19 @@ import { useSelector } from 'react-redux';
 import { RootState } from './store';
 import i18n from './i18n';
 import { useSidebar } from './hooks/useSidebar';
+import Modal from './components/Modal/Modal';
 
 function App() {
   const theme = useSelector((state: RootState) => state.app.settings.theme)
   const language = useSelector((state: RootState) => state.app.settings.language)
   const sidebarView = useSelector((state: RootState) => state.app.sidebarView)
-  const {getSettings} = useFirebase()
+  const modalVisible = useSelector((state: RootState) => state.app.modalVisible)
+  const {getSettings, getTasks} = useFirebase()
   const {isSidebarVisible} = useSidebar()
 
   useEffect(() => {
     getSettings()
+    getTasks()
   });
 
   React.useEffect(() => {
@@ -27,10 +30,17 @@ function App() {
   return (
     <div className={styles[`page_${theme}`]}>
       <Header theme={theme} />
-      <Content theme={theme} language={language} />
+      <Content 
+        theme={theme} 
+        language={language} 
+      />
       <Sidebar 
         theme={theme} 
         visible={isSidebarVisible(sidebarView)}
+      />
+      <Modal
+        theme={theme} 
+        visible={modalVisible}
       />
     </div>
   );
