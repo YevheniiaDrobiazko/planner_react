@@ -2,6 +2,10 @@
   "TITLE": "planner",
   "MORE": "see more...",
   "REMOVE": "ARE YOU SURE YOU WANT TO DELETE THIS TASK: ",
+  "TAB": {
+    "TO_DO": "to do",
+    "DONE": "done"
+  },
   "BUTTON": {
     "TODAY": "today",
     "CLOSE": "close"

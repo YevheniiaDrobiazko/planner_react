@@ -3,10 +3,8 @@ import styles from './CurrentTasks.module.css';
 import { TaskSpaceType, ThemeType } from '../../features/types';
 import { useDate } from '../../hooks/useDate';
 import Task from '../Task/Task';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
 import { useTranslation } from 'react-i18next';
-import { idText } from 'typescript';
+import { useTasks } from '../../hooks/useTasks';
 
 interface CurrentTasksProps {
   theme: ThemeType
@@ -16,25 +14,18 @@ interface CurrentTasksProps {
 
 const CurrentTasks: ({theme, classSpace, date}: CurrentTasksProps ) => JSX.Element = 
   ({theme, classSpace, date}) => {
-    const tasks = useSelector((state: RootState) => state.app.tasks)
+    const {toDoTasks, doneTasks} = useTasks()
     const {changeDateFormat} = useDate()
     const {t} = useTranslation()
 
-    const currentTasks = () => {
-      const toDoTasks = tasks.filter((task) => 
-        task.date === changeDateFormat(date) && task.status !== 'done')
-      const doneTasks = tasks.filter((task) => 
-        task.date === changeDateFormat(date) && task.status === 'done')
-      return classSpace === 'modal'
-      ? [...toDoTasks, ...doneTasks]
-      : toDoTasks
-    }
+    const currentTasks = () => classSpace === 'modal'
+      ? [...toDoTasks(changeDateFormat(date)), ...doneTasks(changeDateFormat(date))]
+      : toDoTasks(changeDateFormat(date))
 
     const currentDayTasksList = () => 
       classSpace === 'calendar' && currentTasks().length > 2
         ? currentTasks().slice(0, 2)
         : currentTasks()
-      
 
     const contentTile = () => currentDayTasksList().map((task) => 
       <li key={task.id}>

@@ -1,0 +1,11 @@
+.list {
+  font-size: 18px;
+  text-transform: capitalize;
+}
+.list_dark {
+  composes: list;
+}
+.list_light {
+  composes: list;
+  color: var(--lightTheme-color0);
+}

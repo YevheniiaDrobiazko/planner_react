@@ -8,6 +8,10 @@ interface AppState {
     theme: ThemeType
     language: LanguageType
   },
+  tabs: {
+    toDo: boolean,
+    done: boolean
+  },
   sidebarView: SidebarViewType,
   sidebarContent: keyof SidebarViewType,
   modalVisible: boolean,
@@ -19,6 +23,10 @@ const initialState: AppState = {
   settings: {
     theme: 'dark',
     language: 'en'
+  },
+  tabs: {
+    toDo: true,
+    done: false
   },
   sidebarView: {
     settings: false,
@@ -75,6 +83,18 @@ export const appSlice = createSlice({
     changeTasks: (state, action: PayloadAction<TaskType[]>) => {
       state.tasks = action.payload
     },
+    activeToDoTab: (state) => {
+      state.tabs = {
+        toDo: true,
+        done: false
+      }
+    },
+    activeDoneTab: (state) => {
+      state.tabs = {
+        toDo: false,
+        done: true
+      }
+    }
   },
 })
 
@@ -86,7 +106,9 @@ export const {
   openModal,
   closeModal,
   changeDate,
-  changeTasks
+  changeTasks,
+  activeToDoTab,
+  activeDoneTab
 } = appSlice.actions
 
 export const rootReducer = appSlice.reducer;
