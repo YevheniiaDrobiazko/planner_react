@@ -21,6 +21,7 @@ interface SidebarProps {
 const Sidebar: ({theme, visible}: SidebarProps ) => JSX.Element = 
   ({theme, visible}) => {
     const sidebarContent = useSelector((state: RootState) => state.app.sidebarContent)
+    const tasks = useSelector((state: RootState) => state.app.tasks)
     const dispatch = useDispatch()
     const {t} = useTranslation()
   
@@ -39,7 +40,7 @@ const Sidebar: ({theme, visible}: SidebarProps ) => JSX.Element =
               <Search theme={theme} />
             }
             {sidebarContent === 'list' &&
-              <List theme={theme} />
+              <List theme={theme} tasks={tasks} />
             }
             {sidebarContent === 'notification' &&
               <Notification theme={theme} />

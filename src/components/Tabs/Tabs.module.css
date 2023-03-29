@@ -1,0 +1,47 @@
+.tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.tabs_dark {
+  composes: tabs;
+}
+.tabs_light {
+  composes: tabs;
+}
+
+.tab{
+  margin: 0 20px;
+  padding: 5px 15px;
+  font-size: 21px;
+  border-bottom: 1px solid;
+}
+.tab:hover {
+  cursor: pointer;
+}
+
+.tab_dark,
+.tab_light {
+  composes: tab;
+}
+.tab_dark:hover {
+  text-shadow: 2px 2px 1px var(--darkTheme-color2);
+}
+.tab_light:hover {
+  text-shadow: 2px 2px 1px var(--lightTheme-color2);
+}
+
+.tab_active {
+  font-weight: 700;
+  border-bottom: 2px solid;
+}
+.tab_dark_active {
+  composes: tab_dark;
+  composes: tab_active
+}
+.tab_light_active {
+  composes: tab_light;
+  composes: tab_active
+}
+
